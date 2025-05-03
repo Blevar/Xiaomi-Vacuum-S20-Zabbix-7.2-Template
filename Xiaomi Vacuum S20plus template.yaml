@@ -1,0 +1,252 @@
+zabbix_export:
+  version: '7.2'
+  template_groups:
+    - uuid: 7df96b18c230490a9a0a9e2307226338
+      name: Templates
+  templates:
+    - uuid: 0169d8f21b684fba90c43342c2423a44
+      template: 'Xiaomi Vacuum S20 plus'
+      name: 'Xiaomi Vacuum S20 plus'
+      groups:
+        - name: Templates
+      items:
+        - uuid: c9c4eb734be344e79230231139cc68c0
+          name: 'Area Cleaned m2'
+          type: DEPENDENT
+          key: area.cleaned.m2
+          trends: '0'
+          units: m2
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.area_cleaned_m2
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 6e93f409fcc94dc4be508376f4863316
+          name: 'Battery Level'
+          type: DEPENDENT
+          key: battery.level
+          trends: '0'
+          units: '%'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.battery_level
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 2fce7365dc8544f080f70b04847afb19
+          name: Charging
+          type: DEPENDENT
+          key: charging
+          value_type: TEXT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.charging
+            - type: STR_REPLACE
+              parameters:
+                - '1'
+                - 'true'
+            - type: STR_REPLACE
+              parameters:
+                - '0'
+                - 'false'
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 691afeb593e644a8ac61c071d95c8fd8
+          name: 'Child Lock'
+          type: DEPENDENT
+          key: child.lock
+          value_type: TEXT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.child_lock
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: d6c8683beb724450b085e56ccb7ddb87
+          name: 'Clean Time Min'
+          type: DEPENDENT
+          key: clean.time.min
+          trends: '0'
+          units: min
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.clean_time_min
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: c8447edafa0f4649b425c8d5de1b7904
+          name: 'Error Code'
+          type: DEPENDENT
+          key: error.code
+          value_type: TEXT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.error_code
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 38fedddfbb5140658ac3ee8001b95280
+          name: 'Fan Power Level'
+          type: DEPENDENT
+          key: fan.power.level
+          value_type: TEXT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.fan_power_level
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 8e0ffd59c6724a66ad41f7682decd4be
+          name: 'Filter Percent'
+          type: DEPENDENT
+          key: filter.percent
+          trends: '0'
+          units: '%'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.filter_percent
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 1f4cbad6db204c1cacaaa0675a75a0ae
+          name: 'Filter Time Left'
+          type: DEPENDENT
+          key: filter.time.left
+          trends: '0'
+          units: h
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.filter_time_left
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 14b8bfe4eaf54129ae0ae9e892b32019
+          name: 'Main Brush Percent'
+          type: DEPENDENT
+          key: main.brush.percent
+          trends: '0'
+          units: '%'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.main_brush_percent
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: c35682cd43044295840d1a7f7779f6ad
+          name: 'Main Brush Time Left'
+          type: DEPENDENT
+          key: main.brush.time.left
+          trends: '0'
+          units: h
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.main_brush_time_left
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 01d20734af7b4b8aa69683c6cf2068ed
+          name: Manufacturer
+          type: DEPENDENT
+          key: manufacturer
+          value_type: TEXT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.manufacturer
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: ab9a461db6c6412d82daba68276c5b15
+          name: Mode
+          type: DEPENDENT
+          key: mode
+          value_type: TEXT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.mode
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 792dc1f95e3242ab9edcfec129c7c7df
+          name: Model
+          type: DEPENDENT
+          key: model
+          value_type: TEXT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.model
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: dcc03708703941d0a72663d4d83dcc50
+          name: 'Serial Number'
+          type: DEPENDENT
+          key: serial.number
+          value_type: TEXT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.serial_number
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 00007dd9a3aa41299f3c28155fb719ae
+          name: 'Side Brush Percent'
+          type: DEPENDENT
+          key: side.brush.percent
+          trends: '0'
+          units: '%'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.side_brush_percent
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 34fcffbde24d49adbcac4209e0d5d6f1
+          name: 'Side Brush Time Left'
+          type: DEPENDENT
+          key: side.brush.time.left
+          trends: '0'
+          units: h
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.side_brush_time_left
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 92b62f546b424ceaa45b26065143ba33
+          name: Status
+          type: DEPENDENT
+          key: status
+          value_type: TEXT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.status
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: d72f4b4d9ead4e938d3db5739d33e6ea
+          name: 'Unknown 2 4'
+          type: DEPENDENT
+          key: unknown.2.4
+          value_type: TEXT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.unknown_2_4
+          master_item:
+            key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+        - uuid: 8f7598e1435249438a89f24ca5790629
+          name: 'Get Data'
+          type: EXTERNAL
+          key: 'xiaomi_vacuum_s20plus.py[{$HOST.IP},{$HOST.TOKEN}]'
+          history: '0'
+          value_type: TEXT
+          preprocessing:
+            - type: REGEX
+              parameters:
+                - '(?s).*?(\{.*\}).*'
+                - \1
+      macros:
+        - macro: '{$HOST.IP}'
+        - macro: '{$HOST.TOKEN}'
